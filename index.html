@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>توصيلة - رحلات، طرود، والمزيد</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #2E86C1, #1ABC9C);
+        }
+        
+        .bouncing-arrow {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+        /* Style for active nav links */
+        .nav-link.active {
+            color: #1ABC9C;
+            font-weight: 700;
+            border-bottom: 2px solid #1ABC9C;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Header / Navbar -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#home" class="nav-link-logo text-3xl font-bold gradient-bg bg-clip-text text-transparent">توصيلة</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="nav-link text-gray-600 hover:text-teal-500 pb-1">الرئيسية</a>
+                <a href="#features" class="nav-link text-gray-600 hover:text-teal-500 pb-1">مميزات التطبيق</a>
+                <a href="#news" class="nav-link text-gray-600 hover:text-teal-500 pb-1">أخبار الكباتن</a>
+                <a href="#download-main"
+                    class="gradient-bg text-white font-bold py-2 px-6 rounded-full hover:opacity-90 transition-opacity">حمل
+                    التطبيق</a>
+            </div>
+            <div class="md:hidden">
+                 <button id="mobile-menu-button" class="text-gray-600 focus:outline-none">
+                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                 </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
+            <a href="#home" class="nav-link block py-2 px-4 text-sm hover:bg-gray-100">الرئيسية</a>
+            <a href="#features" class="nav-link block py-2 px-4 text-sm hover:bg-gray-100">مميزات التطبيق</a>
+            <a href="#news" class="nav-link block py-2 px-4 text-sm hover:bg-gray-100">أخبار الكباتن</a>
+            <a href="#download-main" class="block py-3 px-4 text-center bg-teal-500 text-white font-bold">حمل التطبيق</a>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <div id="app-content">
+        <!-- Home Page (Booking Interface) -->
+        <main id="home-page" class="page container mx-auto px-6 py-12">
+            <div class="gradient-bg text-white rounded-2xl shadow-2xl p-8 md:p-12 text-center relative overflow-hidden">
+                 <div class="absolute -top-10 -right-10 w-32 h-32 bg-white/20 rounded-full"></div>
+                 <div class="absolute -bottom-16 -left-10 w-48 h-48 bg-white/10 rounded-lg transform rotate-45"></div>
+
+                <h1 class="text-4xl md:text-5xl font-extrabold mb-4 z-10 relative">انضم الى شبكة شركاءنا وشغل تطبيق توصيلة في مدينتك</h1>
+                <button id="partner-cta"
+                    class\
+                    
+                    
+                    
+                    ="bg-white text-teal-600 font-bold py-2 px-8 rounded-full shadow-lg mb-8 hover:bg-gray-200 transition-colors z-10 relative">اضغط
+                    هنا للمزيد</button>
+
+                <div class="mb-6 z-10 relative">
+                    <div class="inline-flex items-center bg-white/30 rounded-full p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                        <span class="font-semibold mr-2">موقعك:</span>
+                        <select id="location-selector" class="bg-transparent font-bold text-white focus:outline-none cursor-pointer">
+                            <option value="حدائق الأهرام" class="text-black">حدائق الأهرام</option>
+                            <option value="مدينة الشيخ زايد" class="text-black">مدينة الشيخ زايد</option>
+                            <option value="الحي المتميز" class="text-black">الحي المتميز</option>
+                            <option value="مدينة الفردوس" class="text-black">مدينة الفردوس</option>
+                            <option value="مدينة السادات" class="text-black">مدينة السادات</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="services" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4 z-10 relative"></div>
+
+                <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto z-10 relative">
+                     <input type="text" id="current-location" placeholder="موقعك الحالي (بوابة حورس)" class="w-full p-4 rounded-full bg-white/90 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white transition">
+                     <input type="text" id="destination" placeholder="وجهتك إلى؟ (اضغط لتحديد وجهتك ؟)" class="w-full p-4 rounded-full bg-white/90 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white transition">
+                </div>
+                 <div class="mt-8 bouncing-arrow">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
+                </div>
+            </div>
+        </main>
+
+        <!-- News Page -->
+        <section id="news-page" class="page hidden container mx-auto px-6 py-12">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-12 border-b-4 border-teal-500 pb-4">أخبار الكباتن</h2>
+            <div class="space-y-12">
+                <!-- News Article 1 -->
+                <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-2xl font-bold text-teal-600">نظام الساعات المرنة للكباتن</h3>
+                        <span class="bg-teal-100 text-teal-700 text-sm font-semibold px-3 py-1 rounded-full">منذ 11 يوم</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="flex-shrink-0">
+                             <img src="https://images.unsplash.com/photo-1563233269-7e2d5382a46c?q=80&w=2592&auto=format&fit=crop" alt="Captain holding cash" class="w-full md:w-48 h-48 object-cover rounded-lg shadow-md">
+                        </div>
+                        <div class="text-gray-700 space-y-3 leading-relaxed">
+                            <p class="font-bold">للانضمام إلى نظام الساعات المرنة، يجب أن تتوافر الشروط التالية:</p>
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>أن يكون الكابتن مسجلاً على تطبيق توصيلة.</li>
+                                <li>الحد الأدنى لساعات العمل اليومية: 3 ساعات متواصلة.</li>
+                                <li>يحصل الكابتن على قيمة الرحلات كاملة (زيرو عمولة).</li>
+                            </ul>
+                            <a href="#" class="inline-block mt-2 text-sm font-bold text-blue-600 hover:underline">اقرأ المزيد...</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- News Article 2 -->
+                 <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-2xl font-bold text-teal-600">ميزة الأمان الجديدة: مشاركة الرحلة</h3>
+                        <span class="bg-blue-100 text-blue-700 text-sm font-semibold px-3 py-1 rounded-full">منذ أسبوعين</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="flex-shrink-0">
+                             <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2669&auto=format&fit=crop" alt="People sharing information on a phone" class="w-full md:w-48 h-48 object-cover rounded-lg shadow-md">
+                        </div>
+                        <div class="text-gray-700 space-y-3 leading-relaxed">
+                            <p>سلامتكم هي أولويتنا! يسرنا الإعلان عن إطلاق ميزة "مشاركة الرحلة" التي تتيح للركاب مشاركة تفاصيل رحلتهم المباشرة مع الأصدقاء والعائلة بضغطة زر. هذه الميزة توفر راحة بال إضافية وتزيد من مستوى الأمان لجميع مستخدمي التطبيق. </p>
+                             <a href="#" class="inline-block mt-2 text-sm font-bold text-blue-600 hover:underline">اعرف كيف تعمل...</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- News Article 3 -->
+                <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-2xl font-bold text-teal-600">توسعة خدماتنا لتشمل مدينة الشيخ زايد</h3>
+                        <span class="bg-green-100 text-green-700 text-sm font-semibold px-3 py-1 rounded-full">منذ شهر</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="flex-shrink-0">
+                             <img src="https://images.unsplash.com/photo-1594495894542-650a48e28099?q=80&w=2670&auto=format&fit=crop" alt="Cityscape of Sheikh Zayed" class="w-full md:w-48 h-48 object-cover rounded-lg shadow-md">
+                        </div>
+                        <div class="text-gray-700 space-y-3 leading-relaxed">
+                            <p>في إطار خطتنا للنمو، أصبح تطبيق توصيلة متاحًا الآن لخدمة سكان وزوار مدينة الشيخ زايد. ندعو الكباتن الجدد للانضمام إلى شبكتنا للاستفادة من الفرص الجديدة وزيادة دخلهم في واحدة من أكثر المناطق حيوية.</p>
+                             <a href="#" class="inline-block mt-2 text-sm font-bold text-blue-600 hover:underline">انضم إلينا الآن...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- App Features Page -->
+        <section id="features-page" class="page hidden container mx-auto px-6 py-12">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-12 border-b-4 border-teal-500 pb-4">لماذا تختار توصيلة؟</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white rounded-lg shadow p-6 text-center transform hover:scale-105 transition-transform">
+                    <div class="gradient-bg text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">تتبع مباشر للرحلة</h3>
+                    <p class="text-gray-600">اعرف مكان الكابتن في كل لحظة وشاركه مع من تحب لراحة بال تامة.</p>
+                </div>
+                 <!-- Feature 2 -->
+                <div class="bg-white rounded-lg shadow p-6 text-center transform hover:scale-105 transition-transform">
+                    <div class="gradient-bg text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">خدمات متنوعة</h3>
+                    <p class="text-gray-600">من توصيل الأفراد والطرود إلى طلبات المنتجات الطازجة، كل احتياجاتك في مكان واحد.</p>
+                </div>
+                 <!-- Feature 3 -->
+                <div class="bg-white rounded-lg shadow p-6 text-center transform hover:scale-105 transition-transform">
+                    <div class="gradient-bg text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">أسعار تنافسية</h3>
+                    <p class="text-gray-600">استفد من نموذج "بمزاجك" و "زيرو عمولة" للكباتن الذي يضمن لك أفضل سعر ممكن.</p>
+                </div>
+                <!-- Feature 4 -->
+                <div class="bg-white rounded-lg shadow p-6 text-center transform hover:scale-105 transition-transform">
+                    <div class="gradient-bg text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">دردشة داخل التطبيق</h3>
+                    <p class="text-gray-600">تواصل مع الكابتن بسهولة وأمان لتنسيق نقطة الالتقاء بدقة دون الحاجة لمكالمات.</p>
+                </div>
+                 <!-- Feature 5 -->
+                 <div class="bg-white rounded-lg shadow p-6 text-center transform hover:scale-105 transition-transform">
+                    <div class="gradient-bg text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">دعم موثوق</h3>
+                    <p class="text-gray-600">فريق دعم عملاء جاهز لمساعدتك وحل أي مشكلة قد تواجهك بسرعة وكفاءة.</p>
+                </div>
+                 <!-- Feature 6 -->
+                 <div class="bg-white rounded-lg shadow p-6 text-center transform hover:scale-105 transition-transform">
+                    <div class="gradient-bg text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 14l9-5-9-5-9 5 9 5z"></path><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0v6"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">كباتن معتمدون</h3>
+                    <p class="text-gray-600">جميع الكباتن يخضعون لعملية تحقق دقيقة لضمان تجربة آمنة ومريحة لك.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download App Section -->
+        <section id="download-main" class="mt-16 text-center container mx-auto px-6 py-12">
+             <h2 class="text-3xl font-bold text-gray-800 mb-4">جاهز لتبدأ رحلتك؟</h2>
+             <p class="text-gray-600 max-w-2xl mx-auto mb-8">حمل تطبيق توصيلة الآن واستمتع بأسهل وأسرع طريقة للتنقل وطلب الخدمات في مدينتك.</p>
+             <div class="flex justify-center gap-4">
+                 <a href="#" class="inline-block bg-black text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-800 transition">
+                     <div class="flex items-center gap-3">
+                        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M16.526 12.322L5.832 23.016C5.526 23.322 5.028 23.5 4.5 23.5C3.12 23.5 2 22.38 2 21V3C2 1.62 3.12.5 4.5.5C5.028.5 5.526.678 5.832.984L16.526 11.678C16.822 11.974 17 12.472 17 13C17 11.528 16.822 12.026 16.526 12.322Z" fill="white"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M16.526 12.322L5.832.984C6.234.378 7.026 0 7.874 0C9.646 0 11.166 1.43 12.162 2.766L17.214 9.17C17.754 9.848 18.5 11.378 18.5 12.322C18.5 13.266 17.754 14.796 17.214 15.474L12.162 21.878C11.166 23.214 9.646 24.644 7.874 24.644C7.026 24.644 6.234 24.266 5.832 23.66L16.526 12.322Z" fill="url(#paint0_linear_98_20)"></path><defs><linearGradient id="paint0_linear_98_20" x1="5.832" y1="12.322" x2="18.5" y2="12.322" gradientUnits="userSpaceOnUse"><stop stop-color="#00AEEF"></stop><stop offset="1" stop-color="#0083C4"></stop></linearGradient></defs></svg>
+                         <div>
+                             <p class="text-xs">GET IT ON</p>
+                             <p class="text-xl font-bold">Google Play</p>
+                         </div>
+                     </div>
+                 </a>
+                 <a href="#" class="inline-block bg-black text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-800 transition">
+                     <div class="flex items-center gap-3">
+                        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M19.167 15.772c-.645 3.32-3.111 5.433-5.917 5.433-1.417 0-2.833-.67-4.25-1.92-.02-.015-.04-.031-.059-.048-.13-.112-.259-.225-.386-.342-1.284-1.18-2.025-2.6-2.025-4.258 0-3.321 2.541-5.833 5.75-5.833 1.166 0 2.416.584 3.5.584 1.083 0 2.5-.584 4.083-.584.25 0 .5.083.75.083.083 0 .167 0 .25-.083a.4.4 0 01.333.167c-.083.083-.167.167-.167.25-.25 1.084-.75 2.167-1.75 3.167a5.52 5.52 0 01-3.583 1.916zm-5.667-12.589c1.084-.083 2.917-.416 4.333-1.583-1.5.083-3.167.833-4.167 1.666-.833.75-1.833 1.917-2.583 3.5-1.167-1.5-1.834-3.084-1.75-4.75.916.084 2.416.584 3.917 1.167.079.039.157.079.25.1z"></path></svg>
+                         <div>
+                             <p class="text-xs">Download on the</p>
+                             <p class="text-xl font-bold">App Store</p>
+                         </div>
+                     </div>
+                 </a>
+             </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025 توصيلة. جميع الحقوق محفوظة.</p>
+            <div class="mt-4">
+                 <a href="#" class="text-gray-400 hover:text-white mx-2">سياسة الخصوصية</a>
+                 <a href="#" class="text-gray-400 hover:text-white mx-2">شروط الخدمة</a>
+                 <a href="#" class="text-gray-400 hover:text-white mx-2">تواصل معنا</a>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Modal for Partner CTA -->
+    <div id="partner-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-[100] p-4">
+        <div class="bg-white rounded-lg shadow-xl p-8 max-w-lg w-full transform transition-all scale-95 opacity-0">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-2xl font-bold text-gray-800">انضم إلى شبكة كباتن توصيلة</h3>
+                <button id="close-modal" class="text-gray-500 hover:text-gray-800 text-3xl">&times;</button>
+            </div>
+            <p class="text-gray-600 mb-6">كن شريكًا في النجاح وزد من دخلك. نوفر لك المرونة والدعم الكامل. املأ النموذج البسيط أدناه وسنتواصل معك قريبًا.</p>
+            <form>
+                <input type="text" placeholder="الاسم الكامل" class="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500">
+                <input type="tel" placeholder="رقم الهاتف" class="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500">
+                <select class="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500">
+                    <option disabled selected>اختر مدينتك</option>
+                     <option value="حدائق الأهرام">حدائق الأهرام</option>
+                     <option value="مدينة الشيخ زايد">مدينة الشيخ زايد</option>
+                     <option value="الحي المتميز">الحي المتميز</option>
+                </select>
+                <button type="submit" class="w-full gradient-bg text-white font-bold py-3 rounded-lg hover:opacity-90 transition-opacity">إرسال الطلب</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- DATA ---
+            const services = [
+                { name: 'مميز', icon: '🚗', new: false, type: 'ride' },
+                { name: 'بمزاجك', icon: '🚙', new: true, type: 'ride' },
+                { name: 'ملاكي', icon: '🚘', new: false, type: 'ride' },
+                { name: 'خارج المدينة', icon: '🛣️', new: false, type: 'ride' },
+                { name: 'سكوتر', icon: '🛵', new: false, type: 'ride' },
+                { name: 'طرود', icon: '📦', new: false, type: 'delivery' },
+                { name: 'طازة', icon: '🍊', new: false, type: 'delivery' },
+                { name: 'فان', icon: '🚐', new: false, type: 'ride', info: true },
+            ];
+            
+            // --- ELEMENTS ---
+            const servicesContainer = document.getElementById('services');
+            const partnerCtaButton = document.getElementById('partner-cta');
+            const partnerModal = document.getElementById('partner-modal');
+            const closeModalButton = document.getElementById('close-modal');
+            const modalContent = partnerModal.querySelector('div');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pages = document.querySelectorAll('.page');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            // --- STATE ---
+            let selectedService = null;
+            
+            // --- FUNCTIONS ---
+            function renderServices() {
+                if (!servicesContainer) return;
+                servicesContainer.innerHTML = '';
+                services.forEach(service => {
+                    const serviceEl = document.createElement('div');
+                    serviceEl.className = 'service-item flex flex-col items-center justify-center bg-white/20 p-4 rounded-2xl cursor-pointer hover:bg-white/40 transition-all duration-300 transform hover:scale-105';
+                    serviceEl.innerHTML = `
+                        <div class="relative text-5xl mb-2">
+                            ${service.icon}
+                            ${service.new ? '<span class="absolute top-0 right-0 -mt-2 -mr-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">New</span>' : ''}
+                            ${service.info ? '<span class="absolute top-0 left-0 -mt-1 -ml-1 flex items-center justify-center h-6 w-6 bg-blue-500 text-white text-sm rounded-full border-2 border-white">i</span>' : ''}
+                        </div>
+                        <span class="font-semibold">${service.name}</span>
+                    `;
+                    serviceEl.addEventListener('click', () => handleServiceSelection(service, serviceEl));
+                    servicesContainer.appendChild(serviceEl);
+                });
+            }
+            
+            function handleServiceSelection(service, element) {
+                 document.querySelectorAll('.service-item').forEach(el => el.classList.remove('ring-4', 'ring-white'));
+                 element.classList.add('ring-4', 'ring-white');
+                 selectedService = service;
+                 console.log('Selected Service:', selectedService.name);
+                 
+                 const destinationInput = document.getElementById('destination');
+                 if (destinationInput && destinationInput.value) {
+                     // Using a custom modal instead of alert
+                     showBookingAlert(`تم اختيار خدمة "${selectedService.name}" لرحلتك إلى ${destinationInput.value}. سيتم البحث عن كابتن.`);
+                 } else if (destinationInput) {
+                    destinationInput.focus();
+                    destinationInput.placeholder = "الرجاء تحديد وجهتك أولاً!";
+                 }
+            }
+
+            function showBookingAlert(message) {
+                // A simple, non-blocking alert substitute
+                const alertBox = document.createElement('div');
+                alertBox.style.cssText = 'position:fixed; top:20px; left:50%; transform:translateX(-50%); background-color:#2E86C1; color:white; padding:15px 25px; border-radius:10px; box-shadow:0 4px 15px rgba(0,0,0,0.2); z-index:1000; font-size:1.1rem;';
+                alertBox.textContent = message;
+                document.body.appendChild(alertBox);
+                setTimeout(() => {
+                    alertBox.style.transition = 'opacity 0.5s';
+                    alertBox.style.opacity = '0';
+                    setTimeout(() => document.body.removeChild(alertBox), 500);
+                }, 3000);
+            }
+
+            function openModal() {
+                partnerModal.classList.remove('hidden');
+                partnerModal.classList.add('flex');
+                setTimeout(() => {
+                   modalContent.classList.remove('scale-95', 'opacity-0');
+                }, 10);
+            }
+            
+            function closeModal() {
+                modalContent.classList.add('scale-95', 'opacity-0');
+                setTimeout(() => {
+                    partnerModal.classList.add('hidden');
+                    partnerModal.classList.remove('flex');
+                }, 200);
+            }
+
+            function navigateTo(hash) {
+                const route = hash.substring(1); // remove #
+                
+                // Hide all pages
+                pages.forEach(p => p.classList.add('hidden'));
+                
+                // Show the target page
+                const targetPage = document.getElementById(route + '-page');
+                if (targetPage) {
+                    targetPage.classList.remove('hidden');
+                } else {
+                    // Default to home page if route is invalid
+                    document.getElementById('home-page').classList.remove('hidden');
+                }
+
+                // Update active link
+                navLinks.forEach(link => {
+                    if (link.getAttribute('href') === hash) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+
+                // Close mobile menu on navigation
+                mobileMenu.classList.add('hidden');
+            }
+            
+            // --- EVENT LISTENERS ---
+            if (partnerCtaButton) {
+                partnerCtaButton.addEventListener('click', openModal);
+                closeModalButton.addEventListener('click', closeModal);
+                partnerModal.addEventListener('click', (e) => {
+                    if (e.target === partnerModal) closeModal();
+                });
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const hash = link.getAttribute('href');
+                    window.location.hash = hash;
+                });
+            });
+            
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Listen for hash changes
+            window.addEventListener('hashchange', () => navigateTo(window.location.hash));
+
+            // --- INITIALIZATION ---
+            renderServices();
+            // Initial navigation based on URL hash or default to #home
+            navigateTo(window.location.hash || '#home');
+        });
+    </script>
+</body>
+</html>
