@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tawsilla - Ride Hailing Redesigned</title>
+    <style>
+        :root {
+            --primary: #2ecc71;
+            --secondary: #f1c40f;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --text: #333;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .cta-button {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #27ae60;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: 
+                linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                url('https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .app-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .app-badges img {
+            height: 50px;
+        }
+        
+        /* Sections */
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Solutions Section */
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .solution-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+        
+        .solution-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .solution-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .solution-content {
+            padding: 1.5rem;
+        }
+        
+        .solution-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        /* Features Section */
+        .features-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .tab-button {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .tab-button.active {
+            border-bottom: 3px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .feature-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        /* Pricing Section */
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .pricing-card.popular {
+            border: 2px solid var(--primary);
+            position: relative;
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+        
+        .price span {
+            font-size: 1rem;
+            color: #666;
+        }
+        
+        /* Comparison Section */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+        
+        .comparison-table th, .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .comparison-table th {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background-color: #f8f9fa;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1rem;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 0.2rem;
+        }
+        
+        .author-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .app-badges {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Taws<span>illa</span></div>
+                <div class="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#solutions">Solutions</a>
+                    <a href="#features">Features</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#why">Why Tawsilla</a>
+                    <a href="#about">About Us</a>
+                    <a href="#blog">Blog</a>
+                    <a href="#" class="cta-button">Download App</a>
+                </div>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Ride Smarter, Pay Less</h1>
+            <p>Tawsilla offers safe, affordable rides across Egypt with our commission-free model that saves drivers money and passes the savings to you.</p>
+            <a href="#" class="cta-button">Get Started</a>
+            <div class="app-badges">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on App Store">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play">
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section id="solutions">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Solutions</h2>
+                <p>Whether you need a quick city ride or intercity travel, Tawsilla has you covered with multiple service options.</p>
+            </div>
+            <div class="solutions-grid">
+                <div class="solution-card">
+                    <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="City Rides">
+                    <div class="solution-content">
+                        <h3>City Rides</h3>
+                        <p>Quick and affordable transportation within your city with vetted drivers.</p>
+                    </div>
+                </div>
+                <div class="solution-card">
+                    <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Intercity Travel">
+                    <div class="solution-content">
+                        <h3>Intercity Travel</h3>
+                        <p>Comfortable rides between cities at competitive prices.</p>
+                    </div>
+                </div>
+                <div class="solution-card">
+                    <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Delivery Services">
+                    <div class="solution-content">
+                        <h3>Delivery Services</h3>
+                        <p>Fast and reliable package delivery with no commission fees for drivers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Powerful Features</h2>
+                <p>Discover what makes Tawsilla the preferred choice for riders and drivers across Egypt.</p>
+            </div>
+            
+            <div class="features-tabs">
+                <button class="tab-button active" data-tab="rider-features">For Riders</button>
+                <button class="tab-button" data-tab="driver-features">For Drivers</button>
+            </div>
+            
+            <div id="rider-features" class="tab-content active">
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Easy Booking</h3>
+                        <p>Book a ride in just a few taps with our intuitive mobile app.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h3>Real-time Tracking</h3>
+                        <p>Follow your driver's route in real-time on the interactive map.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <h3>Fare Estimates</h3>
+                        <p>Know your fare before you book with our upfront pricing.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>Driver Ratings</h3>
+                        <p>Rate your driver after each ride to maintain quality standards.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <h3>Multiple Payments</h3>
+                        <p>Pay with cash, credit card, or mobile wallets.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Safety Features</h3>
+                        <p>Emergency button and ride sharing with trusted contacts.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="driver-features" class="tab-content">
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <h3>Instant Alerts</h3>
+                        <p>Get notified immediately about nearby ride requests.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h3>In-app Navigation</h3>
+                        <p>Turn-by-turn directions optimized for the fastest routes.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h3>Fare Calculator</h3>
+                        <p>See exactly what you'll earn before accepting a ride.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Earnings Dashboard</h3>
+                        <p>Track your daily, weekly, and monthly earnings.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-percentage"></i>
+                        </div>
+                        <h3>No Commission</h3>
+                        <p>Keep 100% of your fares with our unique model.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>Flexible Hours</h3>
+                        <p>Work whenever you want with no minimum hours.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Transparent Pricing</h2>
+                <p>Our commission-free model means lower prices for riders and better earnings for drivers.</p>
+            </div>
+            
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>City Rides</h3>
+                    <div class="price">25 EGP <span>starting fare</span></div>
+                    <ul style="list-style: none; text-align: left; margin: 1.5rem 0;">
+                        <li style="margin-bottom: 0.8rem;"><i class="fas fa-check" style="color: var(--primary); margin-right: 0.5rem;"></i> Base fare: 10 EGP</li>
+                        <li style="margin-bottom: 0.8rem;"><i class="fas fa-check" style="color: var(--primary); margin-right: 0.5rem;"></i> 5 EGP per km</li>
+                        <li style="margin-bottom: 0.8rem;"><i class="fas fa-check" style="color: var(--primary); margin-right: 0.5rem;"></i> 1 EGP per minute</li>
+                        <li style="margin-bottom: 0.8rem;"><i class="fas fa-check" style="color: var(--primary); margin-right: 0.5rem;"></i> No surge pricing</li>
+                    </ul>
+                    <a href="#" class="cta-button" style="display: inline-block;">Learn More</a>
+                </div>
+                
+                <div class="pricing-card popular">
+                    <div class="popular-badge">Most Popular</div>
+                    <h3>Intercity Travel</h3>
+                    <div class="price">150 EGP <span>per 50km</span></div>
+                    <ul style="list-style: none; text-align: left; margin: 1.5rem 0;">
+                        <li style="margin-bottom: 0.8rem;"><i class="fas fa-check" style="color: var(--primary); margin-right: 0.5rem;"></i> Flat rate pricing</li>
+                        <li style="margin-bottom: 0.8rem;"><i class="fas fa-check" style="color: var(--primary); margin-right: 0.5rem;"></i> 150 EGP base (up to 50km)</li>
+                        <li style="margin-bottom: 0.8rem;"><i class="fas fa-check" style="color: var(--primary); margin-right: 0.5rem;"></i> 2 EGP per additional km</li>
+                        <li style="margin-bottom: 0.8rem;"><i class="fas fa-check" style="color: var(--primary); margin-right: 0.5rem;"></i> Free waiting time (30 min)</li>
+                    </ul>
+                    <a href="#" class="cta-button" style="display: inline-block;">Book Now</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Delivery Services</h3>
+                    <div class="price">30 EGP <span>starting fare</span></div>
+                    <ul style="list-style: none; text-align: left; margin: 1.5rem 0;">
+                        <li style="margin-bottom: 0.8rem;"><i class="fas fa-check" style="color: var(--primary); margin-right: 0.5rem;"></i> Base fare: 15 EGP</li>
+                        <li style="margin-bottom: 0.8rem;"><i class="fas fa-check" style="color: var(--primary); margin-right: 0.5rem;"></i> 3 EGP per km</li>
+                        <li style="margin-bottom: 0.8rem;"><i class="fas fa-check" style="color: var(--primary); margin-right: 0.5rem;"></i> No size restrictions</li>
+                        <li style="margin-bottom: 0.8rem;"><i class="fas fa-check" style="color: var(--primary); margin-right: 0.5rem;"></i> Real-time tracking</li>
+                    </ul>
+                    <a href="#" class="cta-button" style="display: inline-block;">Send Package</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Tawsilla Section -->
+    <section id="why" style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Tawsilla?</h2>
+                <p>Discover the advantages that make us the preferred choice for riders and drivers alike.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-money-bill-alt"></i>
+                    </div>
+                    <h3>Lower Prices</h3>
+                    <p>Our no-commission model means we can offer fares up to 20% lower than competitors.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Enhanced Safety</h3>
+                    <p>All drivers undergo rigorous background checks and vehicles are regularly inspected.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Local Expertise</h3>
+                    <p>Designed specifically for Egyptian roads, traffic patterns, and payment preferences.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Dedicated customer service available round the clock in Arabic and English.</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 3rem;">
+                <h3 style="text-align: center; margin-bottom: 1.5rem;">How We Compare</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Tawsilla</th>
+                            <th>Uber</th>
+                            <th>Careem</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Commission Rate</td>
+                            <td><strong>0%</strong></td>
+                            <td>25%</td>
+                            <td>20%</td>
+                        </tr>
+                        <tr>
+                            <td>Local Payment Methods</td>
+                            <td><i class="fas fa-check" style="color: var(--primary);"></i></td>
+                            <td><i class="fas fa-check" style="color: var(--primary);"></i></td>
+                            <td><i class="fas fa-check" style="color: var(--primary);"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Arabic Support</td>
+                            <td><i class="fas fa-check" style="color: var(--primary);"></i></td>
+                            <td><i class="fas fa-check" style="color: var(--primary);"></i></td>
+                            <td><i class="fas fa-check" style="color: var(--primary);"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Intercity Rides</td>
+                            <td><i class="fas fa-check" style="color: var(--primary);"></i></td>
+                            <td><i class="fas fa-times" style="color: #e74c3c;"></i></td>
+                            <td><i class="fas fa-check" style="color: var(--primary);"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Delivery Services</td>
+                            <td><i class="fas fa-check" style="color: var(--primary);"></i></td>
+                            <td><i class="fas fa-check" style="color: var(--primary);"></i></td>
+                            <td><i class="fas fa-check" style="color: var(--primary);"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Local Knowledge</td>
+                            <td><strong>Excellent</strong></td>
+                            <td>Good</td>
+                            <td>Very Good</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Users Say</h2>
+                <p>Hear from riders and drivers who have experienced the Tawsilla difference.</p>
+            </div>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "I've been driving with Tawsilla for 6 months and my earnings have increased by 30% compared to other platforms because they don't take any commission. The app is easy to use and support is always available."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Mohamed" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Mohamed Ahmed</h4>
+                            <p>Driver since 2024</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "As a frequent rider, I appreciate Tawsilla's lower prices and local drivers who know the city well. The app shows the fare upfront and the drivers are always professional and courteous."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Amina" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Amina Mahmoud</h4>
+                            <p>Regular Rider</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "The delivery service has been a game-changer for my small business. Prices are reasonable and packages always arrive on time. I've completely switched from other courier services to Tawsilla."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Youssef" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Youssef Hassan</h4>
+                            <p>Small Business Owner</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Tawsilla</h2>
+                <p>Our mission is to transform transportation in Egypt through technology and fair practices.</p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
+                <div>
+                    <h3 style="margin-bottom: 1rem;">Our Story</h3>
+                    <p style="margin-bottom: 1rem;">Founded in 2023, Tawsilla was born out of frustration with existing ride-hailing platforms that charged high commissions to drivers, resulting in higher prices for riders.</p>
+                    <p style="margin-bottom: 1rem;">We set out to create a platform that benefits both riders and drivers by eliminating commissions and focusing on local needs.</p>
+                    <p>Today, we operate in 5 major Egyptian cities with plans to expand nationwide while maintaining our commitment to fair pricing and excellent service.</p>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Tawsilla Team" style="width: 100%; border-radius: 8px; box-shadow: var(--shadow);">
+                </div>
+            </div>
+            
+            <div style="margin-top: 3rem;">
+                <h3 style="text-align: center; margin-bottom: 1.5rem;">Our Team</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center;">
+                    <div>
+                        <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="CEO" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; border: 3px solid var(--primary);">
+                        <h4>Omar Farouk</h4>
+                        <p style="color: #666;">CEO & Founder</p>
+                    </div>
+                    <div>
+                        <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="CTO" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; border: 3px solid var(--primary);">
+                        <h4>Nadia Salem</h4>
+                        <p style="color: #666;">CTO</p>
+                    </div>
+                    <div>
+                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Operations" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; border: 3px solid var(--primary);">
+                        <h4>Karim Adel</h4>
+                        <p style="color: #666;">Head of Operations</p>
+                    </div>
+                    <div>
+                        <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Marketing" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; border: 3px solid var(--primary);">
+                        <h4>Layla Mostafa</h4>
+                        <p style="color: #666;">Marketing Director</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Preview Section -->
+    <section id="blog" style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Latest From Our Blog</h2>
+                <p>Stay updated with transportation news, tips, and company updates.</p>
+            </div>
+            
+            <div class="solutions-grid">
+                <div class="solution-card">
+                    <img src="https://images.unsplash.com/photo-1535448580089-c7f9490c78b1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Traffic Tips">
+                    <div class="solution-content">
+                        <h3>5 Ways to Avoid Cairo Traffic</h3>
+                        <p>Learn strategies to navigate Cairo's busy streets more efficiently.</p>
+                        <a href="#" style="color: var(--primary); font-weight: bold; text-decoration: none;">Read More →</a>
+                    </div>
+                </div>
+                <div class="solution-card">
+                    <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Driver Earnings">
+                    <div class="solution-content">
+                        <h3>Maximizing Your Earnings as a Driver</h3>
+                        <p>Tips and strategies to increase your income with Tawsilla.</p>
+                        <a href="#" style="color: var(--primary); font-weight: bold; text-decoration: none;">Read More →</a>
+                    </div>
+                </div>
+                <div class="solution-card">
+                    <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="App Update">
+                    <div class="solution-content">
+                        <h3>New App Features Coming Soon</h3>
+                        <p>Preview of exciting updates to the Tawsilla rider and driver apps.</p>
+                        <a href="#" style="color: var(--primary); font-weight: bold; text-decoration: none;">Read More →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="#" class="cta-button">View All Blog Posts</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section style="background-color: var(--primary); color: white; text-align: center; padding: 4rem 0;">
+        <div class="container">
+            <h2 style="font-size: 2rem; margin-bottom: 1rem;">Ready to Ride or Drive with Tawsilla?</h2>
+            <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto 2rem;">Join thousands of satisfied riders and drivers enjoying lower prices and better earnings today.</p>
+            <div class="app-badges" style="justify-content: center;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on App Store">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Tawsilla</h3>
+                    <p style="color: #bbb; margin-bottom: 1rem;">Ride smarter, pay less with Egypt's commission-free ride-hailing platform.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>For Riders</h3>
+                    <ul>
+                        <li><a href="#">How to Ride</a></li>
+                        <li><a href="#">Cities We Serve</a></li>
+                        <li><a href="#">Safety Features</a></li>
+                        <li><a href="#">Fare Estimate</a></li>
+                        <li><a href="#">Rider Promotions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>For Drivers</h3>
+                    <ul>
+                        <li><a href="#">Become a Driver</a></li>
+                        <li><a href="#">Driver Requirements</a></li>
+                        <li><a href="#">Driver Earnings</a></li>
+                        <li><a href="#">Driver Resources</a></li>
+                        <li><a href="#">Driver Promotions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Tawsilla. All rights reserved. | <a href="#" style="color: #bbb; text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: #bbb; text-decoration: none;">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked button and corresponding content
+                button.classList.add('active');
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // Mobile menu toggle functionality would go here
+    </script>
+</body>
+</html>
