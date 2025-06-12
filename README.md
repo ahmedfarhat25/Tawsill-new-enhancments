@@ -1,6 +1,6 @@
 # Tawsilla Enhancement Project: Next-Gen Ride-Hailing Platform  
 
-[![Report PDF](https://img.shields.io/badge/Download-Full_Report-3a7c3f?style=for-the-badge&logo=adobe-acrobat-reader)](https://github.com/ahmedfarhat25/Tawsill-new-enhancments/blob/main/Tawsilla%20Enhancement%20report.pdf)  
+[![Report PDF](Tawsilla Enhancment report.pdf)  
 
 ## 🔍 Research Methodology
 Before developing this enhancement strategy, I conducted comprehensive market research:
